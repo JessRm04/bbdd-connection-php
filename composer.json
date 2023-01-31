@@ -1,0 +1,20 @@
+{
+    "name": "manue/mercadona",
+    "description": "Database connection",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ManuelagDuque",
+            "email": "grajalesduquemanuela@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Database\\":"database/",
+            "App\\":"app"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
