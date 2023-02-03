@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use Database\PDO\Connection;
 
-class ClientasController{
+class ClientaController{
 
     /**
      * INDEX: muestra la lista de todos los registros que tenemos
@@ -31,16 +31,17 @@ class ClientasController{
         $connection = Connection::getInstance()->get_instance_database();
         
         //evitando SQL injection //seguridad
-        $rows_affected = $connection->prepare("INSERT INTO clientas (nombre, direccion,
+        /*$rows_affected = $connection->prepare("INSERT INTO clientas (nombre, direccion,
         numero_bancario, puntos_cliente) VALUES(:nombre, :direccion, :numero_bancario, :puntos_cliente)");
-        
-        /* $rows_affected = $connection->prepare("INSERT INTO clientas (nombre, direccion,
+        */
+        $rows_affected = $connection->exec("INSERT INTO clientas (nombre, direccion,
         numero_bancario, puntos_cliente) VALUES(
             '{$data["nombre"]}',
             '{$data["direccion"]}',
             {$data['numero_bancario']},
             {$data['puntos_cliente']}
-        )");*/
+        )");
+
         print_r($rows_affected);
     }
 
