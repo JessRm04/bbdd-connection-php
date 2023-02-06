@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use Database\PDO\Connection;
+use Exception;
 
 class ClientaController{
 
@@ -34,15 +35,23 @@ class ClientaController{
         /*$rows_affected = $connection->prepare("INSERT INTO clientas (nombre, direccion,
         numero_bancario, puntos_cliente) VALUES(:nombre, :direccion, :numero_bancario, :puntos_cliente)");
         */
-        $rows_affected = $connection->exec("INSERT INTO clientas (nombre, direccion,
+        $rows_inserted = $connection->exec("INSERT INTO clientas (nombre, direccion, 
         numero_bancario, puntos_cliente) VALUES(
             '{$data["nombre"]}',
             '{$data["direccion"]}',
             {$data['numero_bancario']},
             {$data['puntos_cliente']}
-        )");
-
-        print_r($rows_affected);
+            )");
+        var_dump($rows_inserted);
+        try{
+            if ($rows_inserted > 0){
+                $response = "Los datos de '{$data["nombre"]}' fueron insertados correctamente ";
+                return [$rows_inserted, $response];
+            }  
+        }
+        catch(Exception $e){
+            echo "Hubo un error durante la inserción del registro de: {$data["nombre"]}. " . $e->getMessage();
+        }  
     }
 
     /**

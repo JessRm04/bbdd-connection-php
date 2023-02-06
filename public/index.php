@@ -7,10 +7,10 @@ require "vendor/autoload.php";
 $clientas_controller = new ClientaController;
 
 $clientas_controller->store([
-    "nombre" => "Diana",
-    "direccion" => "Calle Lopez Obrador",
-    "numero_bancario" => 346233498234532,
-    "puntos_cliente" => 10
+    "nombre" => "Georgette",
+    "direccion" => "Calle Pikachu",
+    "numero_bancario" => 678736233498234532,
+    "puntos_cliente" => 100
 ]);
 
 ?>
